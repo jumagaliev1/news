@@ -3,6 +3,7 @@ package com.github.jumagaliev1.backendAssignment.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
@@ -26,6 +27,10 @@ public class News {
     public static final String NEWS_ID_COLUMN = "news_id";
     public static final String TOPIC_ID_COLUMN = "topic_id";
 
+    public static final String CREATED_AT_COLUMN = "created_at";
+
+    public static final String UPDATED_AT_COLUMN = "updated_at";
+
     @Id
     @Column(name = ID_COLUMN)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,5 +52,9 @@ public class News {
             inverseJoinColumns = @JoinColumn(name = TOPIC_ID_COLUMN))
     private Set<NewsTopic> topics = new HashSet<>();
 
+    @Column(name = CREATED_AT_COLUMN)
+    private LocalDateTime createdAt;
 
+    @Column(name = UPDATED_AT_COLUMN)
+    private LocalDateTime updatedAt;
 }

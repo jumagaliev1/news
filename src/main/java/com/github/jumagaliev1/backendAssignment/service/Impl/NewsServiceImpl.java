@@ -4,6 +4,7 @@ import com.github.jumagaliev1.backendAssignment.exception.ResourceNotFoundExcept
 import com.github.jumagaliev1.backendAssignment.model.entity.News;
 import com.github.jumagaliev1.backendAssignment.model.entity.NewsSource;
 import com.github.jumagaliev1.backendAssignment.model.entity.NewsTopic;
+import com.github.jumagaliev1.backendAssignment.model.request.NewsRequest;
 import com.github.jumagaliev1.backendAssignment.repository.NewsRepository;
 import com.github.jumagaliev1.backendAssignment.service.NewsService;
 import com.github.jumagaliev1.backendAssignment.service.NewsSourceService;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -26,15 +28,20 @@ public class NewsServiceImpl implements NewsService {
     private final NewsTopicService topicService;
 
     @Override
-    public News create(News news) {
-        NewsSource source = sourceService.getById(news.getSource().getId());
-        news.setSource(source);
+    public News create(NewsRequest request) {
+        NewsSource source = sourceService.getById(request.getSource_id());
 
         Set<NewsTopic> topics = new HashSet<>();
-        for (NewsTopic topic : news.getTopics()) {
-            topics.add(topicService.getById(topic.getId()));
+        for (Long topic_id : request.getTopic_id()) {
+            topics.add(topicService.getById(topic_id));
         }
+
+        News news = new News();
+        news.setTitle(request.getTitle());
+        news.setContent(request.getContent());
         news.setTopics(topics);
+        news.setSource(source);
+        news.setCreatedAt(LocalDateTime.now());
 
         return repository.save(news);
     }
@@ -55,6 +62,7 @@ public class NewsServiceImpl implements NewsService {
             topics.add(topicService.getById(topic.getId()));
         }
         existing.setTopics(topics);
+        existing.setUpdatedAt(LocalDateTime.now());
 
         return repository.save(existing);    }
 

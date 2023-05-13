@@ -1,8 +1,10 @@
 package com.github.jumagaliev1.backendAssignment.controller;
 
 import com.github.jumagaliev1.backendAssignment.model.entity.News;
+import com.github.jumagaliev1.backendAssignment.model.request.NewsRequest;
 import com.github.jumagaliev1.backendAssignment.service.NewsService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,11 +16,13 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/news")
 @RequiredArgsConstructor
+@Log4j2
 public class NewsController {
     private final NewsService service;
     @PostMapping
-    public News create(@RequestBody @Valid News news) {
-        return service.create(news);
+    public News create(@RequestBody @Valid NewsRequest request) {
+        log.log(log.getLevel(), "Est contact");
+        return service.create(request);
     }
 
     @PutMapping("/{id}")
