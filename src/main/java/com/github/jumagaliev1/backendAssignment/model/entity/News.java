@@ -23,6 +23,8 @@ public class News {
     public static final String SOURCE_COLUMN = "source";
     public static final String SOURCE_ID_COLUMN = "source_id";
     public static final String NEWS_TOPICS_COLUMN = "news_topics_news";
+    public static final String NEWS_ID_COLUMN = "news_id";
+    public static final String TOPIC_ID_COLUMN = "topic_id";
 
     @Id
     @Column(name = ID_COLUMN)
@@ -41,8 +43,8 @@ public class News {
 
     @ManyToMany
     @JoinTable(name = NEWS_TOPICS_COLUMN,
-            joinColumns = @JoinColumn(name = "news_id"),
-            inverseJoinColumns = @JoinColumn(name = "topic_id"))
+            joinColumns = @JoinColumn(name = NEWS_ID_COLUMN),
+            inverseJoinColumns = @JoinColumn(name = TOPIC_ID_COLUMN))
     private Set<NewsTopic> topics = new HashSet<>();
 
 
