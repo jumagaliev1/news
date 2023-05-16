@@ -15,8 +15,6 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     Page<News> findBySourceId(Long sourceId, Pageable pageable);
     Page<News> findByTopicsId(Long topicId, Pageable pageable);
 
-//    @Query("SELECT ns.name, COUNT(*) as count_news FROM News n JOIN NewsSource ns ON n.source_id = ns.id group by n.source_id")
-//    @Query("SELECT 'title', 1")
     @Query("SELECT news.source.name, COUNT(news) as newsCount FROM News news GROUP BY news.source.name")
     List<Object[]> countNewsBySource();
 
