@@ -26,7 +26,7 @@ public class News {
     public static final String NEWS_TOPICS_COLUMN = "news_topics_news";
     public static final String NEWS_ID_COLUMN = "news_id";
     public static final String TOPIC_ID_COLUMN = "topic_id";
-
+    public static final String AUTHOR_COLUMN = "author_id";
     public static final String CREATED_AT_COLUMN = "created_at";
 
     public static final String UPDATED_AT_COLUMN = "updated_at";
@@ -57,4 +57,7 @@ public class News {
 
     @Column(name = UPDATED_AT_COLUMN)
     private LocalDateTime updatedAt;
+
+    @Column(name = AUTHOR_COLUMN)
+    private Long Author;
 }
