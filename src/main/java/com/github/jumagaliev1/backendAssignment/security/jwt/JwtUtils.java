@@ -2,7 +2,6 @@ package com.github.jumagaliev1.backendAssignment.security.jwt;
 
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import com.github.jumagaliev1.backendAssignment.security.UserDetailsImpl;
@@ -15,7 +14,7 @@ import java.util.Date;
  */
 @Component
 @Slf4j
-public class jwtUtils {
+public class JwtUtils {
 
 //    @Value("${quote.app.jwtSecret}")
     private String jwtSecret = "aaaaaaaaa";

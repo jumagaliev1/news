@@ -8,7 +8,7 @@ import com.github.jumagaliev1.backendAssignment.model.response.JwtResponse;
 import com.github.jumagaliev1.backendAssignment.repository.RoleRepository;
 import com.github.jumagaliev1.backendAssignment.repository.UserRepository;
 import com.github.jumagaliev1.backendAssignment.security.UserDetailsImpl;
-import com.github.jumagaliev1.backendAssignment.security.jwt.jwtUtils;
+import com.github.jumagaliev1.backendAssignment.security.jwt.JwtUtils;
 import com.github.jumagaliev1.backendAssignment.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder encoder;
     private final AuthenticationManager authenticationManager;
-    private final jwtUtils jwtUtil;
+    private final JwtUtils jwtUtil;
 
     @Override
     public void registerUser(SignUpRequest request) {

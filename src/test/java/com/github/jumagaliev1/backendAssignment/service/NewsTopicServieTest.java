@@ -49,28 +49,6 @@ public class NewsTopicServieTest {
         verify(newsTopicRepository).save(topic);
     }
 
-//    @Test
-//    public void testUpdateNewsTopic_ExistingTopic_ReturnsUpdatedTopic() {
-//        NewsTopic existingTopic = new NewsTopic();
-//        existingTopic.setId(1L);
-//        existingTopic.setName("Technology");
-//
-//        NewsTopic updatedTopic = new NewsTopic();
-//        updatedTopic.setName("Science");
-//
-//        when(newsTopicRepository.findById(anyLong())).thenReturn(Optional.of(existingTopic));
-//        when(newsTopicRepository.save(any(NewsTopic.class))).thenReturn(updatedTopic);
-//
-//        NewsTopic resultTopic = newsTopicService.update(existingTopic.getId(), updatedTopic);
-//
-//        assertNotNull(resultTopic);
-//        assertEquals(existingTopic.getId(), resultTopic.getId());
-//        assertEquals(updatedTopic.getName(), resultTopic.getName());
-//
-//        verify(newsTopicRepository).findById(existingTopic.getId());
-//        verify(newsTopicRepository).save(existingTopic);
-//    }
-
     @Test
     public void testUpdateNewsTopic_NonExistingTopic_ThrowsResourceNotFoundException() {
         NewsTopic updatedTopic = new NewsTopic();
