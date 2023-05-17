@@ -46,16 +46,14 @@ public class AuthServiceImpl implements AuthService {
         Role userRole = roleRepository.findByName("USER")
                 .get();
         roles.add(userRole);
-
         User user = new User();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(encoder.encode(request.getPassword()));
         user.setCreatedAt(LocalDateTime.now());
         user.setRoles(roles);
-
+        
         userRepository.save(user);
-//        log.info("Create new account with role: " + userRole.getName());
     }
 
     @Override

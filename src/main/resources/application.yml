@@ -13,3 +13,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+back:
+  app:
+    jwtExpirationMs: 86400000
+    jwtSecret: secretKey

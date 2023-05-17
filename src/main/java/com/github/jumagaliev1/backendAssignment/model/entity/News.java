@@ -27,12 +27,14 @@ public class News {
     public static final String CREATED_AT_COLUMN = "created_at";
     public static final String UPDATED_AT_COLUMN = "updated_at";
 
+    private static final int TITLE_COLUMN_LENGTH = 64;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = ID_COLUMN)
     private Long id;
 
-    @Column(name = TITLE_COLUMN, nullable = false)
+    @Column(name = TITLE_COLUMN, nullable = false, length = TITLE_COLUMN_LENGTH)
     private String title;
 
     @Column(name = CONTENT_COLUMN, nullable = false)

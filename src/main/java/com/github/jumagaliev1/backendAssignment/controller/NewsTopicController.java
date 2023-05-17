@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ public class NewsTopicController {
     private final NewsTopicService service;
 
     @PostMapping
+    @ResponseStatus(value = HttpStatus.CREATED)
     public NewsTopic create(@RequestBody @Valid NewsTopic topic) {
         return service.create(topic);
     }
@@ -29,6 +31,7 @@ public class NewsTopicController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
