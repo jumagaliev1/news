@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/app")
 @RequiredArgsConstructor
@@ -20,11 +21,13 @@ public class AuthController {
     private final AuthService registrationService;
     private final AccountValidator validator;
 
-
     @PostMapping("/sign-in")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody SignInRequest request, BindingResult result) {
-        return ResponseEntity.ok(registrationService.authenticate(request));
+        if (result.hasErrors()) {
+            return ResponseEntity.badRequest().body(result);
+        }
 
+        return ResponseEntity.ok(registrationService.authenticate(request));
     }
 
     @PostMapping("/sign-up")
@@ -36,5 +39,4 @@ public class AuthController {
 
         registrationService.registerUser(request);
     }
-
 }

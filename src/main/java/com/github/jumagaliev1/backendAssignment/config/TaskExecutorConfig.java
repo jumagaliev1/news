@@ -10,6 +10,7 @@ import java.util.concurrent.Executor;
 @Configuration
 @EnableAsync
 public class TaskExecutorConfig {
+
     @Bean
     public Executor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -20,4 +21,5 @@ public class TaskExecutorConfig {
         executor.initialize();
         return executor;
     }
+
 }
