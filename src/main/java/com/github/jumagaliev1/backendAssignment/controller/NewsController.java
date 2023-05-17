@@ -21,11 +21,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @Log4j2
 public class NewsController {
+
     private final NewsService service;
     private final StatisticService statisticService;
+
     @PostMapping
     public News create(@RequestBody @Valid NewsRequest request) {
-        log.log(log.getLevel(), "Est contact");
         return service.create(request);
     }
 
@@ -44,11 +45,11 @@ public class NewsController {
         return service.getById(id);
     }
 
-
     @GetMapping
     public Page<News> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         return service.getAll(pageable);
     }
+
     @GetMapping("/stat")
     public List<CountNews> getCountNews() {
         return statisticService.getCountNews();
@@ -65,6 +66,4 @@ public class NewsController {
                                    @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         return service.getByTopicId(topicId, pageable);
     }
-
-
 }

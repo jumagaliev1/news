@@ -15,6 +15,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/news-sources")
 @RequiredArgsConstructor
 public class NewsSourceController {
+
     private final NewsSourceService service;
 
     @PostMapping

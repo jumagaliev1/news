@@ -1,13 +1,11 @@
 package com.github.jumagaliev1.backendAssignment.model.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
 
+import jakarta.persistence.*;
+
 @Entity
-@Table(
-        name = NewsSource.TABLE_NAME,
-        schema = "public"
-)
+@Table(name = NewsSource.TABLE_NAME)
 @Getter
 @Setter
 @ToString
@@ -18,8 +16,8 @@ public class NewsSource {
     public static final String NAME_COLUMN = "name";
 
     @Id
-    @Column(name = ID_COLUMN)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = ID_COLUMN)
     private Long id;
 
     @Column(name = NAME_COLUMN, nullable = false)

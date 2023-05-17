@@ -1,23 +1,20 @@
 package com.github.jumagaliev1.backendAssignment.model.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(
-        name = News.TABLE_NAME,
-        schema = "public"
-)
+@Table(name = News.TABLE_NAME)
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 public class News {
     public static final String TABLE_NAME = "news";
-
     public static final String ID_COLUMN = "id";
     public static final String TITLE_COLUMN = "title";
     public static final String CONTENT_COLUMN = "content";
@@ -28,12 +25,11 @@ public class News {
     public static final String TOPIC_ID_COLUMN = "topic_id";
     public static final String AUTHOR_COLUMN = "author_id";
     public static final String CREATED_AT_COLUMN = "created_at";
-
     public static final String UPDATED_AT_COLUMN = "updated_at";
 
     @Id
-    @Column(name = ID_COLUMN)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = ID_COLUMN)
     private Long id;
 
     @Column(name = TITLE_COLUMN, nullable = false)
@@ -47,9 +43,11 @@ public class News {
     private NewsSource source;
 
     @ManyToMany
-    @JoinTable(name = NEWS_TOPICS_COLUMN,
+    @JoinTable(
+            name = NEWS_TOPICS_COLUMN,
             joinColumns = @JoinColumn(name = NEWS_ID_COLUMN),
-            inverseJoinColumns = @JoinColumn(name = TOPIC_ID_COLUMN))
+            inverseJoinColumns = @JoinColumn(name = TOPIC_ID_COLUMN)
+    )
     private Set<NewsTopic> topics = new HashSet<>();
 
     @Column(name = CREATED_AT_COLUMN)
