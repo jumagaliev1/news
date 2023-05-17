@@ -13,7 +13,7 @@ CREATE TABLE users
     id         bigint PRIMARY KEY,
     created_at timestamp,
     updated_at timestamp,
-    email      varchar(62) NOT NULL
+    email      varchar(64) NOT NULL
         CONSTRAINT uk_email UNIQUE,
     password   varchar(60) NOT NULL,
     username   varchar(32) NOT NULL
@@ -41,8 +41,8 @@ CREATE TABLE news_source
 CREATE TABLE news
 (
     id bigint primary key,
-    title varchar(56) not null,
-    content varchar(124) not null,
+    title varchar(64) not null,
+    content text not null,
     foreign key (id) references news_source (id),
     foreign key (id) references news_topics (id),
     created_at timestamp,

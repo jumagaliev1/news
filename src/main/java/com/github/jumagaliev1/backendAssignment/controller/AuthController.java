@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/app")
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -24,7 +24,8 @@ public class AuthController {
     @PostMapping("/sign-in")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody SignInRequest request, BindingResult result) {
         if (result.hasErrors()) {
-            return ResponseEntity.badRequest().body(result);
+            return ResponseEntity
+                    .badRequest().body(result);
         }
 
         return ResponseEntity.ok(registrationService.authenticate(request));

@@ -14,10 +14,11 @@ import jakarta.persistence.*;
 @ToString
 @NoArgsConstructor
 public class Role {
-    public static final int NAME_COLUMN_LENGTH = 32;
     public static final String TABLE_NAME = "roles";
     public static final String ID_COLUMN = "id";
     public static final String NAME_COLUMN = "name";
+
+    public static final int NAME_COLUMN_LENGTH = 32;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

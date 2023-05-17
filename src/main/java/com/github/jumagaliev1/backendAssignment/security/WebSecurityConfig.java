@@ -17,7 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
@@ -30,7 +29,6 @@ public class WebSecurityConfig {
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
-
     }
 
     @Bean
@@ -54,23 +52,14 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable();
-//                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
-//                .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/auth/login","/auth/sign-up","/error","/app/sign-in","/app/sign-up","/h2").permitAll()
-//                .anyRequest().authenticated();
-//                .and()
-//                .formLogin().loginPage("/auth/login")
-//                .loginProcessingUrl("/auth/login")
-//                .defaultSuccessUrl("/welcome",true)
-//                .failureUrl("/auth/login?error")
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout");
-//                .logoutSuccessUrl("/auth/login");
+        http.cors().and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers("/error","/sign-in","/sign-up").permitAll()
+                .anyRequest().authenticated();
 
         http.headers().frameOptions().sameOrigin();
 
