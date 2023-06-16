@@ -1,4 +1,4 @@
-# Backend Test Assignment for the STRONG TEAM
+# News API
 
 ### Table of Contents
 1. [Introduction](#introduction)
