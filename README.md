@@ -8,7 +8,7 @@
 5. [Testing](#testing)
 
 ## Introduction
-This README document provides an overview and guidance for a Assignment for STRONG TEAM. The project demonstrates the usage of the Spring framework to build a RESTful API. 
+This README document provides an overview and guidance for a News API. The project demonstrates the usage of the Spring framework to build a RESTful API. 
 
 ## Project Structure
 The project structure follows standard Maven conventions for a Java project, with the Spring framework integrated. Here is an overview of the key directories and files:
