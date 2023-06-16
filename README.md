@@ -71,14 +71,14 @@ The project includes the following REST API endpoints that can be accessed for v
   {
     "username":"alibi",
     "email":"alibi@gmail.com",
-    "password":"123456789a"
+    "password":"pa55word"
   }
 ```
 - `POST /sign-in`: Authentication User. Give Bearer Token
 ```
   {
     "username":"alibi",
-    "password":"123456789a"
+    "password":"pa55word"
   }
 ```
 Response
